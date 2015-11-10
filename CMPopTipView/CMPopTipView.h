@@ -92,6 +92,7 @@ typedef NS_ENUM(NSInteger, PointDirection) {
     PointDirectionAny = 0,
     PointDirectionUp,
     PointDirectionDown,
+	PointDirectionCenter	// 2015-05-08, Added by PHIPER, needed to support tips centered inside the target view
 };
 
 typedef NS_ENUM(NSInteger, CMPopTipAnimation) {

@@ -495,9 +495,14 @@
 	CGPoint containerRelativeOrigin = [superview convertPoint:containerView.frame.origin toView:superview];
 
 	CGFloat pointerY;	// Y coordinate of pointer target (within containerView)
-
-
-    if (targetRelativeOrigin.y+targetView.bounds.size.height < containerRelativeOrigin.y) {
+	
+	// 2015-05-08, Added by PHIPER, needed to support tips centered inside the target view
+	if (_preferredPointDirection == PointDirectionCenter) {
+		_pointDirection = PointDirectionCenter;
+		pointerY = [targetView.superview convertPoint:targetView.center toView:containerView].y;
+	}
+	// end of 2015-05-08, Added by PHIPER, needed to support tips centered inside the target view
+	else if (targetRelativeOrigin.y+targetView.bounds.size.height < containerRelativeOrigin.y) {
         pointerY = 0.0;
         _pointDirection = PointDirectionUp;
     }
